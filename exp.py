@@ -217,18 +217,18 @@ if __name__ == "__main__":
     "hidden_size": 32,
     "batch_size": 32
   }
-  model1 = SimpleLoanModel(config["hidden_size"])
+  model_SimpleLoanModel = SimpleLoanModel(config["hidden_size"])
 
   history = train(
-      model=model1,
+      model=model_SimpleLoanModel,
       train_dataset=train_dataset,
       eval_dataset=val_dataset,
       config=config
   )
 
-  model1.load_state_dict(torch.load("model.pt"))
+  model_SimpleLoanModel.load_state_dict(torch.load("model.pt"))
   metrics1 = test(
-      model=model1,
+      model=model_SimpleLoanModel,
       test_dataset=test_dataset,
       config=config)
 
@@ -243,18 +243,18 @@ if __name__ == "__main__":
     "batch_size": 64,
     "num_blocks": 3
   }
-  model2 = LoanModelExtra(config["hidden_size"],
+  model_LoanModelExtra = LoanModelExtra(config["hidden_size"],
                           config["num_blocks"])
   history2 = train(
-    model=model2,
+    model=model_LoanModelExtra,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     config=config
   )
 
-  model2.load_state_dict(torch.load("model.pt"))
+  model_LoanModelExtra.load_state_dict(torch.load("model.pt"))
   metrics2 = test(
-    model=model2,
+    model=model_LoanModelExtra,
     test_dataset=test_dataset,
     config=config)
   print("Experiment2: metrics ", metrics2)
@@ -268,18 +268,18 @@ if __name__ == "__main__":
     "batch_size": 128,
     "num_blocks": 3
   }
-  model3 = LoanModelExtraWithBn(config["hidden_size"],
+  model_LoanModelExtraWithBn = LoanModelExtraWithBn(config["hidden_size"],
                                   config["num_blocks"])
   history3 = train(
-    model=model3,
+    model=model_LoanModelExtraWithBn,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     config=config
   )
 
-  model3.load_state_dict(torch.load("model.pt"))
+  model_LoanModelExtraWithBn.load_state_dict(torch.load("model.pt"))
   metrics3 = test(
-    model=model3,
+    model=model_LoanModelExtraWithBn,
     test_dataset=test_dataset,
     config=config)
   print("Experiment3: metrics ", metrics3)
@@ -297,21 +297,21 @@ if __name__ == "__main__":
           "num_blocks": 3,
           "p": p
       })
-  model4 = LoanModelExtraWithDropout(config["hidden_size"],
+  model_LoanModelExtraWithDropout = LoanModelExtraWithDropout(config["hidden_size"],
                                     config["num_blocks"],
                                     config["p"])
 
   history4 = train(
-    model=model4,
+    model=model_LoanModelExtraWithDropout,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     config=config,
   )
 
-  model4.load_state_dict(torch.load("model.pt"))
+  model_LoanModelExtraWithDropout.load_state_dict(torch.load("model.pt"))
 
   metrics4 = test(
-    model=model4,
+    model=model_LoanModelExtraWithDropout,
     test_dataset=test_dataset,
     config=config)
 
@@ -336,21 +336,21 @@ if __name__ == "__main__":
               "p": 0.1,
               "decay": decay
           })
-  model5 = LoanModelExtraWithDropout(config["hidden_size"],
+  model_LoanModelExtraWithDropout = LoanModelExtraWithDropout(config["hidden_size"],
                                     config["num_blocks"],
                                     config["p"])
 
   history5 = train(
-    model=model5,
+    model=model_LoanModelExtraWithDropout,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     config=config,
   )
 
-  model5.load_state_dict(torch.load("model.pt"))
+  model_LoanModelExtraWithDropout.load_state_dict(torch.load("model.pt"))
 
   metrics5 = test(
-    model=model5,
+    model=model_LoanModelExtraWithDropout,
     test_dataset=test_dataset,
     config=config)
 
